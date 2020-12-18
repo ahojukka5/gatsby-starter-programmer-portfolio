@@ -8,13 +8,13 @@ const Header = styled.h1`
   border-bottom: 1px solid;
 `;
 
-export default ({ data }) => {
+const Posts = ({ data }) => {
   return (
     <Layout>
       <div>
         <Header>Blog posts</Header>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        <h4>{data.allMdx.totalCount} Posts</h4>
+        {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node.fields.slug}>
               <h3>
@@ -29,9 +29,11 @@ export default ({ data }) => {
   );
 };
 
+export default Posts;
+
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
