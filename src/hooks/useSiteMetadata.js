@@ -11,7 +11,9 @@ const query = graphql`
   }
 `;
 
-export const useSiteMetadata = () => {
+const useSiteMetadata = () => {
   const { site } = useStaticQuery(query);
   return site.siteMetadata;
 };
+
+export default useSiteMetadata;
