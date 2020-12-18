@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/seo';
 
-export default ({ data }) => {
+const Post = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <div>
@@ -14,6 +14,8 @@ export default ({ data }) => {
     </div>
   );
 };
+
+export default Post;
 
 export const query = graphql`
   query($slug: String!) {
