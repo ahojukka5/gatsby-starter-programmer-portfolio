@@ -1,7 +1,32 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import Layout from '../components/Layout';
+
+const IndexWrapper = styled.main``;
+
+const PostWrapper = styled.div``;
+
+const IndexPage = ({ data }) => {
+  return (
+    <Layout>
+      <IndexWrapper>
+        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
+          <PostWrapper key={id}>
+            <Link to={fields.slug}>
+              <h1>{frontmatter.title}</h1>
+              <p>{frontmatter.date}</p>
+              <p>{excerpt}</p>
+            </Link>
+          </PostWrapper>
+        ))}
+      </IndexWrapper>
+    </Layout>
+  );
+};
+
+export default IndexPage;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -16,25 +41,10 @@ export const query = graphql`
           title
           date
         }
+        fields {
+          slug
+        }
       }
     }
   }
 `;
-
-const IndexPage = ({ data }) => {
-  return (
-    <>
-      <Layout>
-        {data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
-          <>
-            <h1>{frontmatter.title}</h1>
-            <p>{frontmatter.date}</p>
-            <p>{excerpt}</p>
-          </>
-        ))}
-      </Layout>
-    </>
-  );
-};
-
-export default IndexPage;
