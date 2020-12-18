@@ -1,12 +1,12 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import styled from "styled-components"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import styled from 'styled-components';
 
-const Layout = styled.div``
+const Layout = styled.div``;
 const Header = styled.h1`
   display: inline-block;
   border-bottom: 1px solid;
-`
+`;
 
 export default ({ data }) => {
   return (
@@ -26,8 +26,8 @@ export default ({ data }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
@@ -48,4 +48,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

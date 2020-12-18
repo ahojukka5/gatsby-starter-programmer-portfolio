@@ -1,8 +1,9 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled from "styled-components"
-import SEO from "../components/seo"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import styled from 'styled-components';
+import SEO from '../components/seo';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 const Overlay = styled.div`
   background: black;
@@ -12,7 +13,7 @@ const Overlay = styled.div`
   opacity: 0.5;
   width: 100%;
   height: 100%;
-`
+`;
 
 const Center = styled.div`
   margin: 0;
@@ -23,25 +24,25 @@ const Center = styled.div`
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-`
+`;
 
 const Title = styled.h1`
   font-size: 3rem;
   font-weight: 900;
-`
+`;
 
 const VSpace = styled.div`
   padding: 1.5rem;
-`
+`;
 
 const Subtitle = styled.h2`
   font-size: 1.5rem;
-`
+`;
 
 const GitHubUser = styled.div`
   font-size: 2rem;
   font-weight: bold;
-`
+`;
 
 const FrontPage = () => {
   const data = useStaticQuery(graphql`
@@ -54,18 +55,18 @@ const FrontPage = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <div>
       <Image
         fluid={data.headerImage.childImageSharp.fluid}
         style={{
-          position: "absolute",
+          position: 'absolute',
           left: 0,
           top: 0,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
         }}
       />
       <Overlay />
@@ -74,35 +75,40 @@ const FrontPage = () => {
         <Title>Jukka Aho</Title>
         <GitHubUser>@ahojukka5</GitHubUser>
         <VSpace />
-        <Subtitle onClick={() => console.log("fea-analysis")}>
+        <Subtitle onClick={() => console.log('fea-analysis')}>
           Engineer
         </Subtitle>
-        <Subtitle onClick={() => console.log("programming")}>
+        <Subtitle onClick={() => console.log('programming')}>
           Programmer
         </Subtitle>
-        <Subtitle onClick={() => console.log("data-science")}>
+        <Subtitle onClick={() => console.log('data-science')}>
           Data scientist
         </Subtitle>
-        <Subtitle onClick={() => console.log("web-development")}>
+        <Subtitle onClick={() => console.log('web-development')}>
           Web developer
         </Subtitle>
-        <Subtitle onClick={() => console.log("researcher")}>
+        <Subtitle onClick={() => console.log('researcher')}>
           Researcher
         </Subtitle>
       </Center>
     </div>
-  )
-}
+  );
+};
 
-const IndexPage = () => (
-  <>
-    <SEO title="Jukka Aho" />
-    <header></header>
-    <main>
-      <FrontPage />
-    </main>
-    <footer>© {new Date().getFullYear()} Jukka Aho</footer>
-  </>
-)
+const IndexPage = () => {
+  const { title, description } = useSiteMetadata();
+  return (
+    <div>
+      <SEO title="Jukka Aho" />
+      <SEO title="ahojukka5" />
+      <main>
+        {/* <FrontPage /> */}
+        <header>title: {title}</header>
+        <p>{description}</p>
+      </main>
+      <footer>© {new Date().getFullYear()} Jukka Aho</footer>
+    </div>
+  );
+};
 
-export default IndexPage
+export default IndexPage;

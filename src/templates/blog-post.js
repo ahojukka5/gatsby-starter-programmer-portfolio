@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
-import SEO from "../components/seo"
+import React from 'react';
+import { graphql } from 'gatsby';
+import SEO from '../components/seo';
 
 export default ({ data }) => {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
   return (
     <div>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
@@ -12,8 +12,8 @@ export default ({ data }) => {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -25,4 +25,4 @@ export const query = graphql`
       excerpt
     }
   }
-`
+`;
