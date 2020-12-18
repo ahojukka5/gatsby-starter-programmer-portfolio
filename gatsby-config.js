@@ -1,9 +1,11 @@
+const siteMetadata = {
+  title: `Jukka's coding corner`,
+  description: `This is my personal web page.`,
+  author: `Jukka Aho <ahojukka5@gmail.com>`,
+}
+
 module.exports = {
-  siteMetadata: {
-    title: `Portfolio | Jukka Aho | @ahojukka5`,
-    description: `This is a portfolio web page done by myself for myself.`,
-    author: `@ahojukka5`,
-  },
+  siteMetadata,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
