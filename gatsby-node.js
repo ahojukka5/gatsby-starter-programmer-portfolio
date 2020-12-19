@@ -34,6 +34,10 @@ const createPosts = async ({ graphql, actions: { createPage } }) => {
     }
   `);
 
+  if (result.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPosts" query');
+  }
+
   const posts = response.data.md.nodes;
   const postsMdx = response.data.mdx.nodes;
 
