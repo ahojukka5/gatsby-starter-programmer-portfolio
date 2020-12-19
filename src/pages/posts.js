@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Layout from '../components/Layout';
 
@@ -8,22 +9,46 @@ const IndexWrapper = styled.main``;
 
 const PostWrapper = styled.div``;
 
-const Posts = ({ data }) => {
+const Posts = ({
+  data: {
+    allMdx: { nodes: posts },
+  },
+}) => {
   return (
     <Layout>
       <IndexWrapper>
-        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
-          <PostWrapper key={id}>
-            <Link to={fields.slug}>
-              <h1>{frontmatter.title}</h1>
-              <p>{frontmatter.date}</p>
-              <p>{excerpt}</p>
-            </Link>
-          </PostWrapper>
-        ))}
+        {posts.map(
+          ({ id, excerpt, frontmatter: { title, date }, fields: { slug } }) => (
+            <PostWrapper key={id}>
+              <Link to={slug}>
+                <h1>{title}</h1>
+                <p>{date}</p>
+                <p>{excerpt}</p>
+              </Link>
+            </PostWrapper>
+          )
+        )}
       </IndexWrapper>
     </Layout>
   );
+};
+
+Posts.propTypes = {
+  data: PropTypes.shape({
+    allMdx: PropTypes.shape({
+      nodes: PropTypes.arrayOf({
+        id: PropTypes.number.isRequired,
+        excerpt: PropTypes.string.isRequired,
+        frontmatter: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+        }),
+        fields: PropTypes.shape({
+          slug: PropTypes.string.isRequired,
+        }),
+      }),
+    }),
+  }),
 };
 
 export default Posts;
