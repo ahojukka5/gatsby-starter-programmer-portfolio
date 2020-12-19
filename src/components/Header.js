@@ -8,10 +8,10 @@ const Header = ({ siteTitle, siteDescription }) => {
     <header>
       <button
         onClick={e => {
-          setColorMode(colorMode === 'default' ? 'dark' : 'default');
+          setColorMode(colorMode === 'default' ? 'light' : 'default');
         }}
       >
-        Toggle {colorMode === 'default' ? 'Dark' : 'Light'}
+        Toggle {colorMode === 'default' ? 'Light' : 'Dark'}
       </button>
       <Link to="/">
         <h1>{siteTitle}</h1>
