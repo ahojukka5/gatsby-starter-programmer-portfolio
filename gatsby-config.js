@@ -1,25 +1,25 @@
 const siteMetadata = {
-  title: 'Coding corner',
-  description: 'This is my personal web page.',
-  author: 'Jukka Aho <ahojukka5@gmail.com>',
+  title: `Coding corner`,
+  description: `This is my personal web page.`,
+  author: `Jukka Aho <ahojukka5@gmail.com>`,
 };
 
 module.exports = {
   siteMetadata,
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-theme-ui`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'images',
+        name: `images`,
         path: `${__dirname}/src/images`,
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'posts',
+        name: `posts`,
         path: `${__dirname}/content/posts`,
       },
     },
@@ -37,7 +37,7 @@ module.exports = {
         ],
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 };
