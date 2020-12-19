@@ -1,2 +1,2 @@
-require("./prismjs/themes/prism-jupyter.css")
-require("./prismjs/plugins/command-line/prism-command-line.css")
+require('./prismjs/themes/prism-vsc-dark-plus.css');
+require('./prismjs/plugins/command-line/prism-command-line.css');
