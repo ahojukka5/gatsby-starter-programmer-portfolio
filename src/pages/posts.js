@@ -42,13 +42,13 @@ Posts.propTypes = {
         frontmatter: PropTypes.shape({
           title: PropTypes.string.isRequired,
           date: PropTypes.string.isRequired,
-        }),
+        }).isRequired,
         fields: PropTypes.shape({
           slug: PropTypes.string.isRequired,
-        }),
-      }),
-    }),
-  }),
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default Posts;
