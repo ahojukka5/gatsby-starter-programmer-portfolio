@@ -7,9 +7,25 @@ published: true
 
 Testing PrismJS code formatting with various programming languages.
 
+Using code formatting follows markdown specification, i.e. triple backticks and
+optionally programming language given. Optionally, `lineNumbers` can be given in
+the first line after programming language, to turn on line numbering.
+
+````markdown
+```python lineNumbers
+print("Hello, world!")
+```
+````
+
+Results
+
+```python lineNumbers
+print("Hello, world!")
+```
+
 ## Python
 
-```python
+```python lineNumbers
 import datetime
 
 print("Now is ", datetime.datetime.now())
@@ -33,7 +49,7 @@ const Hello = () => {
 <Hello />;
 
 (function someDemo() {
-  var test = "Hello World!";
+  var test = 'Hello World!';
   console.log(test);
 })();
 
