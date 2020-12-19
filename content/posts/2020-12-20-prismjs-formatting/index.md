@@ -2,6 +2,7 @@
 author: John Doe
 title: Using PrismJS to format code blocks
 date: 2020-12-20
+published: true
 ---
 
 Testing PrismJS code formatting with various programming languages.
