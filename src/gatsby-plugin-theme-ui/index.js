@@ -1,9 +1,15 @@
 export default {
   colors: {
-    text: '#333',
-    background: '#ccc',
-    primary: '#639',
-    secondary: '#ff6347',
+    text: '#000',
+    background: '#fff',
+    primary: '#07c',
+    modes: {
+      dark: {
+        text: '#fff',
+        background: '#000',
+        primary: '#0cf',
+      },
+    },
   },
   fonts: {
     body: 'system-ui, sans-serif',
