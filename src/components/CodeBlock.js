@@ -37,12 +37,13 @@ export const LineContent = styled.span`
 `;
 
 theme['plain']['borderRadius'] = 5;
+theme['plain']['border'] = "2px solid #333333";
+theme['plain']['backgroundColor'] = '#242526';
 
 const CodeBlock = props => {
   const className = props.children.props.className || '';
   const matches = className.match(/language-(?<lang>.*)/);
-  const showLineNumbers = props.showLineNumbers;
-  console.log(props.children.props.children);
+  const showLineNumbers = props.children.props.lineNumbers;
   return (
     <Wrapper>
       <Highlight
