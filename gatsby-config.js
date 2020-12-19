@@ -1,57 +1,52 @@
 const siteMetadata = {
-  title: `Jukka's coding corner`,
-  description: `This is my personal web page.`,
-  author: `Jukka Aho <ahojukka5@gmail.com>`,
-}
+  title: 'Coding corner',
+  description: 'This is my personal web page.',
+  author: 'Jukka Aho <ahojukka5@gmail.com>',
+};
 
 module.exports = {
   siteMetadata,
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        extensions: [`.mdx`, `.md`],
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
+        name: 'markdown-pages',
+        path: `${__dirname}/content`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-plugin-mdx',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: false,
               prompt: {
-                user: `jukka`,
-                host: `xps`,
+                user: 'user',
+                host: 'host',
                 global: true,
               },
             },
@@ -66,4 +61,4 @@ module.exports = {
       },
     },
   ],
-}
+};
