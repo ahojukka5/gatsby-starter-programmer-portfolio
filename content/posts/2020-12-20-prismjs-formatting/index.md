@@ -1,6 +1,6 @@
 ---
 author: John Doe
-title: Using PrismJS to format code blocks
+title: Using gatsby-remark-prismjs to format code blocks
 date: 2020-12-20
 published: true
 ---
