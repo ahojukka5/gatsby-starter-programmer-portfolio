@@ -16,6 +16,7 @@ const Post = ({ data }) => {
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <div>
         <h1>{post.frontmatter.title}</h1>
+        <p>{post.frontmatter.date}</p>
         <MDXRenderer>{post.body}</MDXRenderer>
       </div>
     </Layout>
@@ -30,6 +31,7 @@ export const query = graphql`
       body
       frontmatter {
         title
+        date(formatString: "YYYY MMMM Do")
       }
       excerpt
     }
