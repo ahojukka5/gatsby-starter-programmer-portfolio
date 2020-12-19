@@ -10,8 +10,16 @@ Testing PrismJS code formatting with various programming languages.
 ## Python
 
 ```python
-def hello():
-    print("Hello, world")
+import datetime
+
+print("Now is ", datetime.datetime.now())
+
+def hello(name: str, count: int) -> int:
+    for i in range(count):
+        print(f"Hello, {name}")
+        if i > 3:
+            break
+    return len(name)
 ```
 
 ## JavaScript
