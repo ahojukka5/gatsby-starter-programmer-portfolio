@@ -16,15 +16,7 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 const createPosts = async ({ graphql, actions: { createPage } }) => {
   const response = await graphql(`
     query {
-      md: allMarkdownRemark(filter: { fields: { type: { eq: "post" } } }) {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-
-      mdx: allMdx(filter: { fields: { type: { eq: "post" } } }) {
+      allMdx(filter: { fields: { type: { eq: "post" } } }) {
         nodes {
           fields {
             slug
@@ -34,25 +26,16 @@ const createPosts = async ({ graphql, actions: { createPage } }) => {
     }
   `);
 
-  if (result.errors) {
+  if (response.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPosts" query');
   }
 
-  const posts = response.data.md.nodes;
-  const postsMdx = response.data.mdx.nodes;
+  const posts = response.data.allMdx.nodes;
 
   posts.forEach(({ fields: { slug } }) => {
     createPage({
       path: slug,
       component: path.resolve('./src/templates/post.js'),
-      context: { slug },
-    });
-  });
-
-  postsMdx.forEach(({ fields: { slug } }) => {
-    createPage({
-      path: slug,
-      component: path.resolve('./src/templates/postMdx.js'),
       context: { slug },
     });
   });
