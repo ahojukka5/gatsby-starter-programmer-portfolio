@@ -9,11 +9,11 @@ const IndexWrapper = styled.main``;
 
 const PostWrapper = styled.div``;
 
-const Posts = ({
-  data: {
-    allMarkdownRemark: { nodes: posts },
-  },
-}) => {
+const Posts = ({ data }) => {
+  const getDate = post => new Date(post.frontmatter.date);
+  const byDate = (a, b) => getDate(b) - getDate(a);
+  const posts = [...data.md.nodes, ...data.mdx.nodes].sort(byDate);
+
   return (
     <Layout>
       <IndexWrapper>
@@ -33,29 +33,28 @@ const Posts = ({
   );
 };
 
-Posts.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      nodes: PropTypes.arrayOf({
-        id: PropTypes.number.isRequired,
-        excerpt: PropTypes.string.isRequired,
-        frontmatter: PropTypes.shape({
-          title: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired,
-        }).isRequired,
-        fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
-};
-
 export default Posts;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
-    allMarkdownRemark(
+    md: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
+      nodes {
+        id
+        excerpt(pruneLength: 250)
+        frontmatter {
+          title
+          date
+        }
+        fields {
+          slug
+        }
+      }
+    }
+
+    mdx: allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
     ) {
