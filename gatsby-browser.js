@@ -1,2 +1,12 @@
-require('./prismjs/themes/prism-vsc-dark-plus.css');
-require('./prismjs/plugins/command-line/prism-command-line.css');
+import React from 'react';
+import { MDXProvider } from '@mdx-js/react';
+
+import CodeBlock from './src/components/CodeBlock';
+
+const component = {
+  pre: CodeBlock,
+};
+
+export const wrapRootElement = ({ element }) => {
+  return <MDXProvider components={component}>{element}</MDXProvider>;
+};
