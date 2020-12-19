@@ -17,9 +17,7 @@ const Layout = ({ children }) => {
     <AppStyles>
       <SEO title="Jukka Aho" />
       <SEO title="ahojukka5" />
-      <header>
-        <Header siteTitle={title} siteDescription={description} />
-      </header>
+      <Header siteTitle={title} siteDescription={description} />
       <main>{children}</main>
       <footer>
         <Footer />
