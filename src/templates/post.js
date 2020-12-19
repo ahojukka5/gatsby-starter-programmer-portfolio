@@ -4,7 +4,8 @@ import { graphql } from 'gatsby';
 import SEO from '../components/seo';
 import Layout from '../components/Layout';
 
-const Post = ({ data: { markdownRemark: post } }) => {
+const Post = ({ data }) => {
+  const post = data.md;
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
@@ -20,7 +21,7 @@ export default Post;
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    md: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
