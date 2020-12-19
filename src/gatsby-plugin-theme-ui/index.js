@@ -1,13 +1,13 @@
 export default {
   colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#07c',
+    text: '#d4d4d4',
+    background: '#1e1e1e',
+    primary: '#0cf',
     modes: {
-      dark: {
-        text: '#fff',
-        background: '#000',
-        primary: '#0cf',
+      light: {
+        text: '#000',
+        background: '#fff',
+        primary: '#07c',
       },
     },
   },
