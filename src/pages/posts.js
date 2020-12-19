@@ -10,9 +10,7 @@ const IndexWrapper = styled.main``;
 const PostWrapper = styled.div``;
 
 const Posts = ({ data }) => {
-  const getDate = post => new Date(post.frontmatter.date);
-  const byDate = (a, b) => getDate(b) - getDate(a);
-  const posts = [...data.md.nodes, ...data.mdx.nodes].sort(byDate);
+  const posts = data.allMdx.nodes;
 
   return (
     <Layout>
@@ -37,24 +35,7 @@ export default Posts;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
-    md: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
-    ) {
-      nodes {
-        id
-        excerpt(pruneLength: 250)
-        frontmatter {
-          title
-          date
-        }
-        fields {
-          slug
-        }
-      }
-    }
-
-    mdx: allMdx(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
     ) {
