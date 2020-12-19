@@ -1,6 +1,6 @@
 ---
 author: John Doe
-title: Using gatsby-remark-prismjs to format code blocks
+title: Using prism-react-renderer to format code blocks
 date: 2020-12-20
 published: true
 ---
@@ -23,6 +23,13 @@ const Hello = () => {
 };
 
 <Hello />;
+
+(function someDemo() {
+  var test = "Hello World!";
+  console.log(test);
+})();
+
+return () => <App />;
 ```
 
 ## Julia
