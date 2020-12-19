@@ -11,7 +11,7 @@ const PostWrapper = styled.div``;
 
 const Posts = ({
   data: {
-    allMdx: { nodes: posts },
+    allMarkdownRemark: { nodes: posts },
   },
 }) => {
   return (
@@ -55,7 +55,7 @@ export default Posts;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
-    allMdx(
+    allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
     ) {
