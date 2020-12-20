@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'gatsby';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -8,10 +9,13 @@ const useStyles = makeStyles({
     display: `flex`,
     justifyContent: `space-between`,
   },
-  linkText: {
+  link: {
     textDecoration: `none`,
     textTransform: `uppercase`,
     color: `white`,
+  },
+  linkText: {
+    fontWeight: `bold`,
   },
 });
 
@@ -24,11 +28,11 @@ const MenuItems = ({ navLinks }) => {
       className={classes.navDisplayFlex}
     >
       {navLinks.map(({ title, path }) => (
-        <a href={path} key={title} className={classes.linkText}>
+        <Link to={path} key={title} className={classes.link}>
           <ListItem button>
             <ListItemText primary={title} />
           </ListItem>
-        </a>
+        </Link>
       ))}
     </List>
   );
