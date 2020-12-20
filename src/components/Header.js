@@ -22,9 +22,6 @@ const useStyles = makeStyles({
     justifyContent: `space-between`,
     alignItems: `center`,
   },
-  homeIcon: {
-    color: 'white',
-  },
   title: {
     fontWeight: 'bold',
   },
@@ -39,12 +36,7 @@ const navLinks = [
 
 const DarkModeIcon = ({ darkMode, onClick }) => {
   return (
-    <IconButton
-      edge="start"
-      color="inherit"
-      aria-label="home"
-      onClick={onClick}
-    >
+    <IconButton edge="start" aria-label="home" onClick={onClick}>
       {darkMode ? (
         <Brightness4 fontSize="large" />
       ) : (
@@ -59,22 +51,18 @@ const Header = ({ darkMode, onClickDarkMode }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="inherit">
       <Toolbar>
         <Container className={classes.navbarDisplayFlex}>
-          <Link to="/" className={classes.homeIcon}>
-            <IconButton edge="start" color="inherit" aria-label="home">
-              <Home fontSize="large" />
-            </IconButton>
-          </Link>
+          <IconButton component={Link} to="/" edge="start" aria-label="home">
+            <Home fontSize="large" />
+          </IconButton>
           <Hidden xsDown>
             <MenuItems navLinks={navLinks} />
           </Hidden>
           <div>
             <DarkModeIcon darkMode={darkMode} onClick={onClickDarkMode} />
-            <Hidden mdUp>
-              <SideDrawer navLinks={navLinks} />
-            </Hidden>
+            <SideDrawer navLinks={navLinks} />
           </div>
         </Container>
       </Toolbar>
