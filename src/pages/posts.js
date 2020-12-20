@@ -1,33 +1,40 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
+import { Box, Divider, Typography } from '@material-ui/core';
 
 import Layout from '../components/Layout';
 
-const IndexWrapper = styled.main``;
+import { makeStyles } from '@material-ui/core/styles';
 
-const PostWrapper = styled.div``;
+const useStyles = makeStyles({
+  link: {
+    textDecoration: `none`,
+  },
+});
+
+const Post = ({ id, frontmatter, fields }) => {
+  const classes = useStyles();
+  return (
+    <Box key={id} py={1}>
+      <Box my={1} lineHeight="normal">
+        <Link to={fields.slug} className={classes.link}>
+          <Typography variant="h5" color="textPrimary">
+            {frontmatter.title}
+          </Typography>
+        </Link>
+      </Box>
+      <Box mb={1}>
+        <Typography variant="body2" color="textSecondary">
+          By {frontmatter.author}, {frontmatter.date}
+        </Typography>
+      </Box>
+    </Box>
+  );
+};
 
 const Posts = ({ data }) => {
   const posts = data.allMdx.nodes;
-
-  return (
-    <Layout>
-      <IndexWrapper>
-        {posts.map(
-          ({ id, excerpt, frontmatter: { title, date }, fields: { slug } }) => (
-            <PostWrapper key={id}>
-              <Link to={slug}>
-                <h1>{title}</h1>
-                <p>{date}</p>
-                <p>{excerpt}</p>
-              </Link>
-            </PostWrapper>
-          )
-        )}
-      </IndexWrapper>
-    </Layout>
-  );
+  return <Layout>{posts.map(Post)}</Layout>;
 };
 
 export default Posts;
@@ -40,10 +47,10 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
         frontmatter {
+          author
           title
-          date
+          date(formatString: "YYYY MMMM Do")
         }
         fields {
           slug
