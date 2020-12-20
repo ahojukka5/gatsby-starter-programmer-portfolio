@@ -25,6 +25,9 @@ const useStyles = makeStyles({
   title: {
     fontWeight: 'bold',
   },
+  toolbar: {
+    padding: 0,
+  },
 });
 
 const navLinks = [
@@ -51,10 +54,10 @@ const Header = ({ darkMode, onClickDarkMode }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" color="inherit">
-      <Toolbar>
+    <AppBar position="static" color="transparent">
+      <Toolbar className={classes.toolbar}>
         <Container className={classes.navbarDisplayFlex}>
-          <IconButton component={Link} to="/" edge="start" aria-label="home">
+          <IconButton component={Link} to="/" edge="start">
             <Home fontSize="large" />
           </IconButton>
           <Hidden xsDown>
