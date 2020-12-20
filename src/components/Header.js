@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby-theme-material-ui';
+import { Link } from 'gatsby';
 
 import {
   AppBar,
@@ -17,18 +17,16 @@ import MenuItems from './MenuItems';
 import SideDrawer from './SideDrawer';
 
 const useStyles = makeStyles({
-  navDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-between`,
-  },
   navbarDisplayFlex: {
     display: `flex`,
     justifyContent: `space-between`,
+    alignItems: `center`,
   },
-  linkText: {
-    textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `white`,
+  homeIcon: {
+    color: 'white',
+  },
+  title: {
+    fontWeight: 'bold',
   },
 });
 
@@ -63,15 +61,17 @@ const Header = ({ darkMode, onClickDarkMode }) => {
     <AppBar position="static">
       <Toolbar>
         <Container className={classes.navbarDisplayFlex}>
-          <IconButton edge="start" color="inherit" aria-label="home">
-            <Home fontSize="large" />
-          </IconButton>
+          <Link to="/" className={classes.homeIcon}>
+            <IconButton edge="start" color="inherit" aria-label="home">
+              <Home fontSize="large" />
+            </IconButton>
+          </Link>
           <Hidden xsDown>
             <MenuItems navLinks={navLinks} />
           </Hidden>
           <div>
             <DarkModeIcon darkMode={darkMode} onClick={onClickDarkMode} />
-            <Hidden smUp>
+            <Hidden mdUp>
               <SideDrawer navLinks={navLinks} />
             </Hidden>
           </div>
