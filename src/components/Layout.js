@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
 import { useMediaQuery, CssBaseline } from '@material-ui/core';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-export const light = {
+const light = {
   palette: {
     type: 'light',
   },
 };
 
-export const dark = {
+const dark = {
   palette: {
     type: 'dark',
   },
@@ -24,9 +28,11 @@ const Layout = ({ children }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // console.log('prefersDarkMode? ', prefersDarkMode);
 
-  const theme = React.useMemo(() => createMuiTheme(darkMode ? dark : light), [
-    darkMode,
-  ]);
+  const createTheme = theme => responsiveFontSizes(createMuiTheme(theme));
+  const themeSettings = darkMode ? dark : light;
+  const theme = React.useMemo(() => createTheme(themeSettings), [darkMode]);
+
+  console.log(`darkMode = ${darkMode}`);
 
   return (
     <ThemeProvider theme={theme}>
