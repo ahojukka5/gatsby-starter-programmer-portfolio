@@ -1,28 +1,20 @@
 import React from 'react';
 import SEO from '../components/seo';
-import styled from 'styled-components';
+import Container from '@material-ui/core/Container';
 
-import useSiteMetadata from '../hooks/useSiteMetadata';
 import Header from './Header';
+import Main from './Main';
 import Footer from './Footer';
 
-const AppStyles = styled.main`
-  width: 800px;
-  margin: 0 auto;
-`;
-
 const Layout = ({ children }) => {
-  const { title, description } = useSiteMetadata();
   return (
-    <AppStyles>
+    <Container>
       <SEO title="Jukka Aho" />
       <SEO title="ahojukka5" />
-      <Header siteTitle={title} siteDescription={description} />
-      <main>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
-    </AppStyles>
+      <Header />
+      <Main>{children}</Main>
+      <Footer />
+    </Container>
   );
 };
 
