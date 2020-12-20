@@ -11,7 +11,12 @@ const Post = ({ data }) => {
   const post = data.mdx;
   return (
     <Layout>
-      <Typography variant="h6" color="textPrimary" align="center">
+      <Typography
+        component="h4"
+        variant="h4"
+        color="textPrimary"
+        align="center"
+      >
         <Box my={1} lineHeight="normal">
           {post.frontmatter.title}
         </Box>
