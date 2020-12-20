@@ -17,38 +17,35 @@ const useStyles = makeStyles({
   },
   link: {
     textDecoration: `none`,
-    // textTransform: `uppercase`,
-    color: `white`,
   },
   linkText: {
     fontWeight: `bold`,
   },
 });
 
+const NavLink = navLink => {
+  const classes = useStyles();
+  return (
+    <ListItem button key={navLink.path}>
+      <ListItemText>
+        <Link to={navLink.path} key={navLink.path} className={classes.link}>
+          <Typography color="textPrimary">{navLink.title}</Typography>
+        </Link>
+      </ListItemText>
+    </ListItem>
+  );
+};
+
 const MenuItems = ({ navLinks }) => {
   const classes = useStyles();
+  const visible = navLink => !navLink.hidden;
   return (
     <List
       component="nav"
       aria-labelledby="main navigation"
       className={classes.navDisplayFlex}
     >
-      {navLinks.map(
-        navLink =>
-          navLink.hidden || (
-            <Link to={navLink.path} key={navLink.path} className={classes.link}>
-              <ListItem button>
-                <ListItemText>
-                  <Typography color="textPrimary">
-                    <Box fontWeight="fontWeightNormal" fontSize="h6.fontSize">
-                      {navLink.title}
-                    </Box>
-                  </Typography>
-                </ListItemText>
-              </ListItem>
-            </Link>
-          )
-      )}
+      {navLinks.filter(visible).map(NavLink)}
     </List>
   );
 };
