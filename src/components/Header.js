@@ -4,16 +4,17 @@ import { Link } from 'gatsby-theme-material-ui';
 import {
   AppBar,
   Container,
+  Hidden,
   IconButton,
-  List,
-  ListItem,
-  ListItemText,
   Toolbar,
+  Typography,
 } from '@material-ui/core';
 import { Home, Brightness4, Brightness5 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useSiteMetadata from '../hooks/useSiteMetadata';
+import MenuItems from './MenuItems';
+import SideDrawer from './SideDrawer';
 
 const useStyles = makeStyles({
   navDisplayFlex: {
@@ -32,12 +33,27 @@ const useStyles = makeStyles({
 });
 
 const navLinks = [
-  { title: `About me`, path: `/about` },
   { title: `Posts`, path: `/posts` },
   { title: `Projects`, path: `/projects` },
   { title: `Research`, path: `/research` },
-  { title: `CV`, path: `/cv` },
 ];
+
+const DarkModeIcon = ({ darkMode, onClick }) => {
+  return (
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="home"
+      onClick={onClick}
+    >
+      {darkMode ? (
+        <Brightness4 fontSize="large" />
+      ) : (
+        <Brightness5 fontSize="large" />
+      )}
+    </IconButton>
+  );
+};
 
 const Header = ({ darkMode, onClickDarkMode }) => {
   const { author, title, description } = useSiteMetadata();
@@ -50,31 +66,15 @@ const Header = ({ darkMode, onClickDarkMode }) => {
           <IconButton edge="start" color="inherit" aria-label="home">
             <Home fontSize="large" />
           </IconButton>
-          <List
-            component="nav"
-            aria-labelledby="main navigation"
-            className={classes.navDisplayFlex}
-          >
-            {navLinks.map(({ title, path }) => (
-              <a href={path} key={title} className={classes.linkText}>
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              </a>
-            ))}
-          </List>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="home"
-            onClick={onClickDarkMode}
-          >
-            {darkMode ? (
-              <Brightness4 fontSize="large" />
-            ) : (
-              <Brightness5 fontSize="large" />
-            )}
-          </IconButton>
+          <Hidden xsDown>
+            <MenuItems navLinks={navLinks} />
+          </Hidden>
+          <div>
+            <DarkModeIcon darkMode={darkMode} onClick={onClickDarkMode} />
+            <Hidden smUp>
+              <SideDrawer navLinks={navLinks} />
+            </Hidden>
+          </div>
         </Container>
       </Toolbar>
     </AppBar>
