@@ -6,6 +6,7 @@
   "author": "Jukka Aho <ahojukka5@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@theme-ui/preset-deep": "^0.3.4",
