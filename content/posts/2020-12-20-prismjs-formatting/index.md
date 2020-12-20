@@ -18,7 +18,7 @@ print("Hello, world!")
 ```
 ````
 
-Results
+The markdown above is rendered as follows:
 
 ```python lineNumbers
 print("Hello, world!")
