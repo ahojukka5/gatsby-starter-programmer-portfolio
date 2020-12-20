@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata,
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-theme-ui`,
+    `gatsby-theme-material-ui`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
