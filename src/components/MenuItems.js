@@ -1,7 +1,13 @@
 import React from 'react';
 
 import { Link } from 'gatsby';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -11,7 +17,7 @@ const useStyles = makeStyles({
   },
   link: {
     textDecoration: `none`,
-    textTransform: `uppercase`,
+    // textTransform: `uppercase`,
     color: `white`,
   },
   linkText: {
@@ -27,13 +33,22 @@ const MenuItems = ({ navLinks }) => {
       aria-labelledby="main navigation"
       className={classes.navDisplayFlex}
     >
-      {navLinks.map(({ title, path }) => (
-        <Link to={path} key={title} className={classes.link}>
-          <ListItem button>
-            <ListItemText primary={title} />
-          </ListItem>
-        </Link>
-      ))}
+      {navLinks.map(
+        navLink =>
+          navLink.hidden || (
+            <Link to={navLink.path} key={navLink.path} className={classes.link}>
+              <ListItem button>
+                <ListItemText>
+                  <Typography color="textPrimary">
+                    <Box fontWeight="fontWeightNormal" fontSize="h6.fontSize">
+                      {navLink.title}
+                    </Box>
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+          )
+      )}
     </List>
   );
 };
