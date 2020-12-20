@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'gatsby';
 import {
   Drawer,
   IconButton,
@@ -43,11 +44,11 @@ const SideDrawer = ({ navLinks }) => {
     >
       <List component="nav">
         {navLinks.map(({ title, path }) => (
-          <a href={path} key={title} className={classes.linkText}>
+          <Link to={path} key={title} className={classes.linkText}>
             <ListItem button>
               <ListItemText primary={title} />
             </ListItem>
-          </a>
+          </Link>
         ))}
       </List>
     </div>
