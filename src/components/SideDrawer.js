@@ -73,7 +73,7 @@ const SideDrawer = ({ navLinks }) => {
         aria-label="menu"
         onClick={toggleDrawer('right', true)}
       >
-        <Menu fontSize="large" style={{ color: `white` }} />
+        <Menu fontSize="large" />
       </IconButton>
       <Drawer
         anchor="right"
