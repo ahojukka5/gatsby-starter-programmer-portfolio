@@ -53,10 +53,8 @@ const SideDrawer = ({ navLinks }) => {
                 </ListItemIcon>
               )}
               <ListItemText>
-                <Typography color="textPrimary">
-                  <Box fontWeight="fontWeightNormal" fontSize="h6.fontSize">
-                    {navLink.title}
-                  </Box>
+                <Typography variant="h6" color="textPrimary">
+                  {navLink.title}
                 </Typography>
               </ListItemText>
             </ListItem>
@@ -78,7 +76,6 @@ const SideDrawer = ({ navLinks }) => {
       <Drawer
         anchor="right"
         open={state.right}
-        onOpen={toggleDrawer('right', true)}
         onClose={toggleDrawer('right', false)}
       >
         {sideDrawerList('right')}
