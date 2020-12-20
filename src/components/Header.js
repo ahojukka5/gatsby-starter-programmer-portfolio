@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
 import React from 'react';
 import { Link } from 'gatsby';
-import { useColorMode, Flex, NavLink } from 'theme-ui';
 
 const ColorChangeSwitch = () => {
   const [colorMode, setColorMode] = useColorMode();
@@ -20,25 +17,21 @@ const ColorChangeSwitch = () => {
 const Header = ({ siteTitle, siteDescription }) => {
   return (
     <header>
-      <Flex as="nav">
-        <NavLink to="/" as={Link}>
+        <Link to="/">
           {siteTitle}
-        </NavLink>
-        <div sx={{ mx: 'auto' }} />
-        <NavLink to="/posts" as={Link}>
+        </Link>
+        <Link to="/posts">
           Posts
-        </NavLink>
-        <NavLink to="/projects" as={Link}>
+        </Link>
+        <Link to="/projects">
           Projects
-        </NavLink>
-        <NavLink to="/research" as={Link}>
+        </Link>
+        <Link to="/research">
           Research
-        </NavLink>
-        <NavLink to="/cv" as={Link}>
+        </Link>
+        <Link to="/cv">
           CV
-        </NavLink>
-        <ColorChangeSwitch />
-      </Flex>
+        </Link>
     </header>
   );
 };
