@@ -10,23 +10,10 @@ import {
   ListItemText,
   Toolbar,
 } from '@material-ui/core';
-import { Home } from '@material-ui/icons';
+import { Home, Brightness4, Brightness5 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useSiteMetadata from '../hooks/useSiteMetadata';
-
-const ColorChangeSwitch = () => {
-  const [colorMode, setColorMode] = useColorMode();
-  return (
-    <button
-      onClick={e => {
-        setColorMode(colorMode === 'default' ? 'light' : 'default');
-      }}
-    >
-      Toggle {colorMode === 'default' ? 'Light' : 'Dark'}
-    </button>
-  );
-};
 
 const useStyles = makeStyles({
   navDisplayFlex: {
@@ -52,7 +39,7 @@ const navLinks = [
   { title: `CV`, path: `/cv` },
 ];
 
-const Header = () => {
+const Header = ({ darkMode, onClickDarkMode }) => {
   const { author, title, description } = useSiteMetadata();
   const classes = useStyles();
 
@@ -76,6 +63,18 @@ const Header = () => {
               </a>
             ))}
           </List>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="home"
+            onClick={onClickDarkMode}
+          >
+            {darkMode ? (
+              <Brightness4 fontSize="large" />
+            ) : (
+              <Brightness5 fontSize="large" />
+            )}
+          </IconButton>
         </Container>
       </Toolbar>
     </AppBar>
