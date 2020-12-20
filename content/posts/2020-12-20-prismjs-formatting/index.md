@@ -5,7 +5,8 @@ date: 2020-12-20
 published: true
 ---
 
-Testing PrismJS code formatting with various programming languages.
+This post is about testing PrismJS code formatting with various programming
+languages.
 
 Using code formatting follows markdown specification, i.e. triple backticks and
 optionally programming language given. Optionally, `lineNumbers` can be given in
