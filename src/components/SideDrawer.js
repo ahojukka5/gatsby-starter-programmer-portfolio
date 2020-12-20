@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import {
+  Box,
   Drawer,
   IconButton,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
+  Typography,
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,10 +17,8 @@ const useStyles = makeStyles({
   list: {
     width: 250,
   },
-  linkText: {
+  link: {
     textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `black`,
   },
 });
 
@@ -43,10 +44,21 @@ const SideDrawer = ({ navLinks }) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List component="nav">
-        {navLinks.map(({ title, path }) => (
-          <Link to={path} key={title} className={classes.linkText}>
+        {navLinks.map(navLink => (
+          <Link to={navLink.path} key={navLink.path} className={classes.link}>
             <ListItem button>
-              <ListItemText primary={title} />
+              {navLink.icon && (
+                <ListItemIcon>
+                  <navLink.icon />
+                </ListItemIcon>
+              )}
+              <ListItemText>
+                <Typography color="textPrimary">
+                  <Box fontWeight="fontWeightNormal" fontSize="h6.fontSize">
+                    {navLink.title}
+                  </Box>
+                </Typography>
+              </ListItemText>
             </ListItem>
           </Link>
         ))}
