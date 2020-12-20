@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import useSiteMetadata from '../hooks/useSiteMetadata';
+
 const ColorChangeSwitch = () => {
   const [colorMode, setColorMode] = useColorMode();
   return (
@@ -14,11 +16,12 @@ const ColorChangeSwitch = () => {
   );
 };
 
-const Header = ({ siteTitle, siteDescription }) => {
+const Header = () => {
+  const { title } = useSiteMetadata();
   return (
     <header>
         <Link to="/">
-          {siteTitle}
+          {title}
         </Link>
         <Link to="/posts">
           Posts
