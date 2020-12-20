@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: `Coding corner`,
   description: `This is my personal web page.`,
-  author: `Jukka Aho <ahojukka5@gmail.com>`,
+  author: `Jukka Aho`,
 };
 
 module.exports = {
