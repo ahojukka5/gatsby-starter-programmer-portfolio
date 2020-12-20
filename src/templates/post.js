@@ -11,21 +11,16 @@ const Post = ({ data }) => {
   const post = data.mdx;
   return (
     <Layout>
-      <Typography
-        component="h4"
-        variant="h4"
-        color="textPrimary"
-        align="center"
-      >
-        <Box my={1} lineHeight="normal">
+      <Box my={1} lineHeight="normal">
+        <Typography variant="h4" align="center">
           {post.frontmatter.title}
-        </Box>
-      </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
+        </Typography>
+      </Box>
+      <Typography variant="h6" color="textSecondary" align="center">
         {post.frontmatter.date}
       </Typography>
       <Box my={1}>
-        <Typography variant="body2" color="textPrimary" align="center">
+        <Typography variant="h5" align="center">
           {post.frontmatter.author}
         </Typography>
       </Box>
