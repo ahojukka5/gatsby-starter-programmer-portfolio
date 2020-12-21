@@ -5,10 +5,12 @@ import {
   Box,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Home } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   navDisplayFlex: {
@@ -29,7 +31,9 @@ const NavLink = navLink => {
     <ListItem button key={navLink.path}>
       <ListItemText>
         <Link to={navLink.path} key={navLink.path} className={classes.link}>
-          <Typography color="textPrimary">{navLink.title}</Typography>
+          <Typography variant="h6" color="textPrimary">
+            {navLink.title}
+          </Typography>
         </Link>
       </ListItemText>
     </ListItem>
@@ -40,11 +44,7 @@ const MenuItems = ({ navLinks }) => {
   const classes = useStyles();
   const visible = navLink => !navLink.hidden;
   return (
-    <List
-      component="nav"
-      aria-labelledby="main navigation"
-      className={classes.navDisplayFlex}
-    >
+    <List component="nav" className={classes.navDisplayFlex}>
       {navLinks.filter(visible).map(NavLink)}
     </List>
   );
