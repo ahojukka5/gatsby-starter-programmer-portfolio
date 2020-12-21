@@ -15,11 +15,17 @@ const light = {
   palette: {
     type: 'light',
   },
+  typography: {
+    fontSize: 12,
+  },
 };
 
 const dark = {
   palette: {
     type: 'dark',
+  },
+  typography: {
+    fontSize: 12,
   },
 };
 
@@ -31,16 +37,12 @@ const Layout = ({ children }) => {
   const createTheme = theme => responsiveFontSizes(createMuiTheme(theme));
   const themeSettings = darkMode ? dark : light;
   const theme = React.useMemo(() => createTheme(themeSettings), [darkMode]);
-
-  console.log(`darkMode = ${darkMode}`);
+  const switchDarkMode = () => setDarkMode(!darkMode);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header
-        darkMode={darkMode}
-        onClickDarkMode={() => setDarkMode(!darkMode)}
-      />
+      <Header darkMode={darkMode} onClickDarkMode={switchDarkMode} />
       <Main>{children}</Main>
       <Footer />
     </ThemeProvider>
