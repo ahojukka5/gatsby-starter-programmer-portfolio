@@ -42,7 +42,9 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "ahojukka5"
+    "gatsby",
+    "starter",
+    "software developer"
   ],
   "license": "MIT",
   "scripts": {
