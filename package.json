@@ -3,7 +3,7 @@
   "homepage": "https://gatsby-starter-programmer-portfolio.ahojukka5.com",
   "private": false,
   "description": "Software developer portfolio starter for Gatsby",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Jukka Aho <ahojukka5@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
