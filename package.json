@@ -1,5 +1,6 @@
 {
   "name": "@ahojukka5/gatsby-starter-programmer-portfolio",
+  "homepage": "https://gatsby-starter-programmer-portfolio.ahojukka5.com",
   "private": false,
   "description": "Personal portfolio page of Jukka Aho",
   "version": "0.1.0",
