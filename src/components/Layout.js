@@ -15,17 +15,11 @@ const light = {
   palette: {
     type: 'light',
   },
-  typography: {
-    fontSize: 12,
-  },
 };
 
 const dark = {
   palette: {
     type: 'dark',
-  },
-  typography: {
-    fontSize: 12,
   },
 };
 
