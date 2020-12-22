@@ -51,7 +51,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop --host=0.0.0.0",
-    "predeploy": "npm run build && echo 'gatsby-starter-programmer-portfolio.ahojukka5.com' > public/CNAME",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d public",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
