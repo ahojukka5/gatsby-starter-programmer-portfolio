@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{LTVh:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),c=t.n(a),i=t("7oih");n.default=function(){return c.a.createElement(i.a,null,"Research items.")}}}]);
+//# sourceMappingURL=component---src-pages-research-js-56a7af310000debab128.js.map
